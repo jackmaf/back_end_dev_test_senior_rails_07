@@ -1,0 +1,18 @@
+    default: &default
+      adapter: postgresql
+      encoding: unicode
+      pool: 5
+      host: localhost
+      username: jack
+      password: abcd123456
+    development:
+      <<: *default
+      database: test_vli_development
+    test:
+      <<: *default
+      database: test_vli_test
+    production:
+      <<: *default
+      database: test_vli_production
+      #username: untitled
+      #password: <%= ENV['UNTITLED_DATABASE_PASSWORD'] %>
