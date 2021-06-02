@@ -13,6 +13,15 @@ gem 'pg', '>= 0.18', '< 2.0'
 # Gem API
 gem 'grape'
 
+# gema usada para encontrar segun la latitud y longitud la ciudad
+gem 'geocoder', '~> 1.6', '>= 1.6.7'
+
+# gema usada para generar datos de pruebas
+gem 'faker', '~> 2.18'
+
+# gema usada para admin
+gem 'activeadmin', '~> 2.9'
+
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
@@ -45,6 +54,8 @@ gem 'bootsnap', '>= 1.1.0', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  # gema usada para organizar los diagramas entidad relacion
+  gem 'railroady'
 end
 
 group :development do
