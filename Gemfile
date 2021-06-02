@@ -21,6 +21,7 @@ gem 'faker', '~> 2.18'
 
 # gema usada para admin
 gem 'activeadmin', '~> 2.9'
+gem 'devise'
 
 # Use Puma as the app server
 gem 'puma', '~> 3.11'

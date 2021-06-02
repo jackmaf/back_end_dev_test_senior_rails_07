@@ -70,6 +70,6 @@ puts "Finalizando Trips..."
 #
 # Creacion de administradores
 puts "Empezando los super admins..."
-#AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')# if Rails.env.development?
-#AdminUser.create!(email: 'jackmaf0@gmail.com', password: '12345678', password_confirmation: '12345678')
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')# if Rails.env.development?
+AdminUser.create!(email: 'jackmaf0@gmail.com', password: '12345678', password_confirmation: '12345678')
 puts "Finalizando los super admins..."
