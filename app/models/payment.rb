@@ -1,6 +1,8 @@
 class Payment < ApplicationRecord
   belongs_to :trip
 
+  # CONFIG ENVIRONMENT VARS HEROKU
+  # https://es.stackoverflow.com/questions/200261/como-configurar-variable-de-entorno-en-heroku
   BASE_URL_WOMPI = ENV['BASE_URL_WOMPI']
   PUBLIC_KEY_WOMPI = ENV['PUBLIC_KEY_WOMPI']
   PRIVATE_KEY_WOMPI = ENV['PRIVATE_KEY_WOMPI']
