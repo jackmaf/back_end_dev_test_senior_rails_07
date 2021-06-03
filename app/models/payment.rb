@@ -7,6 +7,25 @@ class Payment < ApplicationRecord
   PUBLIC_KEY_WOMPI = ENV['PUBLIC_KEY_WOMPI']
   PRIVATE_KEY_WOMPI = ENV['PRIVATE_KEY_WOMPI']
 
+  after_commit :pay_wompi, on: [:create, :update]
+
+  # Autor: Jackson Florez Jimenez
+  #
+  # Fecha creacion: 2021-06-03
+  #
+  # Autor actualizacion:
+  #
+  # Fecha actualizacion: 0000-00-00
+  #
+  # Metodo: encargado de hacer el pago a la pasarela de pagos wompi
+  def pay_wompi
+    # se revisa si el viaje tiene ya un valor y tiene un viaje asignado y el id wompi status esten vacios no se halla ya enviado a wompi
+    if !self.trip.total_fee.blank? && !self.trip.nil? && self.id_wompi.blank? && self.status.blank?
+      # Metodo: encargado de generar una transaccion en wompi usando el valor en pesos referencia email y telefono
+      transactions_nequi_wompi(self.trip.total_fee, self.trip.id.to_s, self.trip.rider.email, self.trip.rider.phone_number)
+    end
+  end
+
   # Autor: Jackson Florez Jimenez
   #
   # Fecha creacion: 2021-06-01
@@ -17,10 +36,10 @@ class Payment < ApplicationRecord
   #
   # Metodo: encargado de generar una transaccion en wompi usando el valor en pesos referencia email y telefono
   # Payment.transactions_nequi_wompi(25000, "5", "jackmaf0@gmail.com", "3016469891")
-  def self.transactions_nequi_wompi(pesos, reference, customer_email, phone_number)
+  def transactions_nequi_wompi(pesos, reference, customer_email, phone_number)
     data = {
       # Metodo: encargado de generar el token de aceptacion de abeas data necesario para trabajar con Wompi
-      acceptance_token: Payment.accept_token_wompi,
+      acceptance_token: accept_token_wompi,
       amount_in_cents: pesos.to_i*100,# se agregan 2 ceros para los los centavos
       currency: "COP",
       customer_email: customer_email,
@@ -47,7 +66,10 @@ class Payment < ApplicationRecord
     request.body = data.to_json
     request = https.request(request)
 
-    JSON.parse(request.body)
+    response = JSON.parse(request.body)
+    self.update!(id_wompi: response["data"]["id"], amount: (response["data"]["amount_in_cents"]/100), status: response["data"]["status"])
+
+    response
   end
 
   # Autor: Jackson Florez Jimenez
@@ -61,7 +83,7 @@ class Payment < ApplicationRecord
   # Metodo: encargado de generar el token de aceptacion de abeas data necesario para trabajar con Wompi
   # https://docs.wompi.co/docs/en/tokens-de-aceptacion
   # https://sandbox.wompi.co/v1/merchants/pub_test_jwJdxSIDNMPwvlCL1mgDSGYTvwhLhzyz
-  def self.accept_token_wompi
+  def accept_token_wompi
     require 'uri'
 	  require 'net/http'
     
