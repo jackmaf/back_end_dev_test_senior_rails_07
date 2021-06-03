@@ -129,36 +129,36 @@ admin_password:  password
 ## Usage
 ### 1. Begin Trip
 1.1 look for the id in the administration of a driver
-![I1](https://github.com/jackmaf/back_end_dev_test_senior_rails_07/doc/guide_readme_images/search_driver.png)
+![I1](https://github.com/jackmaf/back_end_dev_test_senior_rails_07/tree/master/doc/guide_readme_images/search_driver.png)
 1.2 look for the id in the administration of a river
-![I1](https://github.com/jackmaf/back_end_dev_test_senior_rails_07/doc/guide_readme_images/search_rider.png)
+![I1](https://github.com/jackmaf/back_end_dev_test_senior_rails_07/tree/master/doc/guide_readme_images/search_rider.png)
 1.3 find a latitude and longitude in google maps
-![I1](https://github.com/jackmaf/back_end_dev_test_senior_rails_07/doc/guide_readme_images/maps.png)
+![I1](https://github.com/jackmaf/back_end_dev_test_senior_rails_07/tree/master/doc/guide_readme_images/maps.png)
 1.4 create trip with next data example:
-![I1](https://github.com/jackmaf/back_end_dev_test_senior_rails_07/doc/guide_readme_images/create_trip.png)
+![I1](https://github.com/jackmaf/back_end_dev_test_senior_rails_07/tree/master/doc/guide_readme_images/create_trip.png)
 1.5 look for the id in the administration of a trip
-![I1](https://github.com/jackmaf/back_end_dev_test_senior_rails_07/doc/guide_readme_images/search_trip.png)
+![I1](https://github.com/jackmaf/back_end_dev_test_senior_rails_07/tree/master/doc/guide_readme_images/search_trip.png)
 
 ### 2. End Trip
 2.1 look for the id in the administration of a trip
-![I1](https://github.com/jackmaf/back_end_dev_test_senior_rails_07/doc/guide_readme_images/search_trip.png)
+![I1](https://github.com/jackmaf/back_end_dev_test_senior_rails_07/tree/master/doc/guide_readme_images/search_trip.png)
 2.2 find a latitude and longitude in google maps
-![I1](https://github.com/jackmaf/back_end_dev_test_senior_rails_07/doc/guide_readme_images/maps.png)
+![I1](https://github.com/jackmaf/back_end_dev_test_senior_rails_07/tree/master/doc/guide_readme_images/maps.png)
 2.3 update trip with next data example:
 Note: minutes are lapse of time imaginary that its take the trip
-![I1](https://github.com/jackmaf/back_end_dev_test_senior_rails_07/doc/guide_readme_images/update_trip.png)
+![I1](https://github.com/jackmaf/back_end_dev_test_senior_rails_07/tree/master/doc/guide_readme_images/update_trip.png)
 2.4 look for the id in the administration of a trip
-![I1](https://github.com/jackmaf/back_end_dev_test_senior_rails_07/doc/guide_readme_images/search_trip.png)
+![I1](https://github.com/jackmaf/back_end_dev_test_senior_rails_07/tree/master/doc/guide_readme_images/search_trip.png)
 
 ### 3. to pay the trip
 3.1 look for the id in the administration of a trip
-![I1](https://github.com/jackmaf/back_end_dev_test_senior_rails_07/doc/guide_readme_images/search_trip.png)
+![I1](https://github.com/jackmaf/back_end_dev_test_senior_rails_07/tree/master/doc/guide_readme_images/search_trip.png)
 3.2 create payment with next data example:
-![I1](https://github.com/jackmaf/back_end_dev_test_senior_rails_07/doc/guide_readme_images/create_payment.png)
+![I1](https://github.com/jackmaf/back_end_dev_test_senior_rails_07/tree/master/doc/guide_readme_images/create_payment.png)
 3.3 check the payment in the admin
-![I1](https://github.com/jackmaf/back_end_dev_test_senior_rails_07/doc/guide_readme_images/admin_payments.png)
+![I1](https://github.com/jackmaf/back_end_dev_test_senior_rails_07/tree/master/doc/guide_readme_images/admin_payments.png)
 3.4 check the payment in wompi
-![I1](https://github.com/jackmaf/back_end_dev_test_senior_rails_07/doc/guide_readme_images/wompi.png)
+![I1](https://github.com/jackmaf/back_end_dev_test_senior_rails_07/tree/master/doc/guide_readme_images/wompi.png)
 
 ### 4. Testing with Rspec
 
