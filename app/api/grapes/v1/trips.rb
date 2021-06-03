@@ -63,12 +63,12 @@ module Grapes
         # Verbo Http: POST
         #
         # Metodo: 
-        desc 'Create trip'
+        desc 'Create trip or Begin Trip'
         params do
           requires :rider_id, type: Integer, desc: 'Id Rider'
           requires :driver_id, type: Integer, desc: 'Id Driver'
-          optional :lat_ini, type: String, desc: 'Starting latitude'
-          optional :lng_ini, type: String, desc: 'Starting longitude'
+          requires :lat_ini, type: String, desc: 'Starting latitude'
+          requires :lng_ini, type: String, desc: 'Starting longitude'
           optional :lat_end, type: String, desc: 'Ending latitude'
           optional :lng_end, type: String, desc: 'Ending Longitude'
           optional :distance_km, type: Integer, desc: 'Distance KM calculated by geocoder'
@@ -77,7 +77,7 @@ module Grapes
           optional :total_fee, type: Integer, desc: 'Total fee'
         end
         post do
-          t = Trip.create!(declared(params))
+          t = Trip.create!(declared(params).reject{|_, v| v.blank?})
           { response: "Successfully created trip!", trip: t}
         end
 
@@ -95,7 +95,7 @@ module Grapes
         # Verbo Http: PUT
         #
         # Metodo: 
-        desc 'Update trip'
+        desc 'Update trip or End Trip'
         params do
           optional :rider_id, type: Integer, desc: 'Id Rider'
           optional :driver_id, type: Integer, desc: 'Id Driver'
@@ -111,7 +111,7 @@ module Grapes
         route_param :id do
           put do
             t = Trip.find(params[:id])
-            t.update!(declared(params))
+            t.update!(declared(params).reject{|_, v| v.blank?})
             { response: "Successfully updated trip!", trip: t}
           rescue ActiveRecord::RecordNotFound
             error!('Trip not found',404)

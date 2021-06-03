@@ -70,7 +70,7 @@ module Grapes
           requires :phone_number, type: String, desc: 'Phone Number' 
         end
         post do
-          r = Rider.create!(declared(params))
+          r = Rider.create!(declared(params).reject{|_, v| v.blank?})
           { response: "Successfully created rider!", rider: r}
         end
 
@@ -97,7 +97,7 @@ module Grapes
         route_param :id do
           put do
             r = Rider.find(params[:id])
-            r.update!(declared(params))
+            r.update!(declared(params).reject{|_, v| v.blank?})
             { response: "Successfully updated rider!", rider: r}
           rescue ActiveRecord::RecordNotFound
             error!('Rider not found',404)

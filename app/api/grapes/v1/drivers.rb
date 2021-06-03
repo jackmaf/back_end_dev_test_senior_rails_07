@@ -69,7 +69,7 @@ module Grapes
           requires :plate_vehicle, type: String, desc: 'Plate Vehicle'
         end
         post do
-          d = Driver.create!(declared(params))
+          d = Driver.create!(declared(params).reject{|_, v| v.blank?})
           { response: "Successfully created driver!", driver: d}
         end
 
@@ -95,7 +95,7 @@ module Grapes
         route_param :id do
           put do
             d = Driver.find(params[:id])
-            d.update!(declared(params))
+            d.update!(declared(params).reject{|_, v| v.blank?})
             { response: "Successfully updated driver!", driver: d}
           rescue ActiveRecord::RecordNotFound
             error!('Driver not found',404)
