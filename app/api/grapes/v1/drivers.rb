@@ -20,7 +20,7 @@ module Grapes
         desc 'Get all drivers'
         get do
           Driver.all
-          #{ response: "OK", driver: driver.all}
+          #{ response: "OK", driver: Driver.all}
         end
 
         # Autor: Jackson Florez Jimenez
@@ -122,7 +122,7 @@ module Grapes
         end
         route_param :id do
           delete do
-            d = Driver.find(params[:id]).delete
+            Driver.find(params[:id]).delete
             { response: "Successfully deleted driver!"}
           rescue ActiveRecord::RecordNotFound
             error!('Driver not found',404)

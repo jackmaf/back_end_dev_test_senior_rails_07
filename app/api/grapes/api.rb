@@ -6,5 +6,6 @@ module Grapes
 
     mount Grapes::V1::Drivers
     mount Grapes::V1::Riders
+    mount Grapes::V1::Payments
   end
 end
