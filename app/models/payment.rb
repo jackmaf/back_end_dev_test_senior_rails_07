@@ -16,6 +16,7 @@ class Payment < ApplicationRecord
   # Fecha actualizacion: 0000-00-00
   #
   # Metodo: encargado de generar una transaccion en wompi usando el valor en pesos referencia email y telefono
+  # Payment.transactions_nequi_wompi(25000, "5", "jackmaf0@gmail.com", "3016469891")
   def self.transactions_nequi_wompi(pesos, reference, customer_email, phone_number)
     data = {
       # Metodo: encargado de generar el token de aceptacion de abeas data necesario para trabajar con Wompi
@@ -31,7 +32,7 @@ class Payment < ApplicationRecord
     }
 
     require 'uri'
-	require 'net/http'
+	  require 'net/http'
     
     uri = URI.parse(BASE_URL_WOMPI+'transactions')
     https = Net::HTTP.new(uri.host,uri.port)
@@ -60,18 +61,17 @@ class Payment < ApplicationRecord
   # Metodo: encargado de generar el token de aceptacion de abeas data necesario para trabajar con Wompi
   # https://docs.wompi.co/docs/en/tokens-de-aceptacion
   # https://sandbox.wompi.co/v1/merchants/pub_test_jwJdxSIDNMPwvlCL1mgDSGYTvwhLhzyz
-  # Payment.transactions_nequi_wompi(15000, "4", "jackmaf0@gmail.com", "3016469891")
   def self.accept_token_wompi
     require 'uri'
-	require 'net/http'
+	  require 'net/http'
     
     url = URI(BASE_URL_WOMPI+'merchants/'+PUBLIC_KEY_WOMPI)
 
-	http = Net::HTTP.new(url.host, url.port)
-	http.use_ssl = true
-	http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+	  http = Net::HTTP.new(url.host, url.port)
+	  http.use_ssl = true
+	  http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
-	request = Net::HTTP::Get.new(url)
+	  request = Net::HTTP::Get.new(url)
 
     response = http.request(request)
 
