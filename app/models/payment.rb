@@ -67,7 +67,11 @@ class Payment < ApplicationRecord
     request = https.request(request)
 
     response = JSON.parse(request.body)
-    self.update!(id_wompi: response["data"]["id"], amount: (response["data"]["amount_in_cents"]/100), status: response["data"]["status"])
+    add_amount = response["data"]["amount_in_cents"].to_i/100
+    self.update!(id_wompi: response["data"]["id"], amount: add_amount, status: response["data"]["status"])
+    # update amount driver
+    current_amount = self.trip.driver.amount.to_i
+    self.trip.driver.update(amount: (add_amount+current_amount))
 
     response
   end
