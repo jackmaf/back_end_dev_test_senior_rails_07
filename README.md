@@ -161,6 +161,17 @@ Note: minutes are lapse of time imaginary that its take the trip
 ![I1](https://github.com/jackmaf/back_end_dev_test_senior_rails_07/blob/master/doc/guide_readme_images/wompi.png)
 
 ### 4. Testing with Rspec
+1. find folder root or back_end_dev_test_senior_rails_07
+```bash
+cd back_end_dev_test_senior_rails_07
+```
+2. run tests
+```bash
+cd bundle exec rspec spec/requests
+```
+![I1](https://github.com/jackmaf/back_end_dev_test_senior_rails_07/blob/master/doc/guide_readme_images/rspec1.png)
+3. see responses tests
+![I1](https://github.com/jackmaf/back_end_dev_test_senior_rails_07/blob/master/doc/guide_readme_images/rspec2.png)
 
 ## Thanks
 
