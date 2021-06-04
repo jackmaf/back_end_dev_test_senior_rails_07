@@ -77,8 +77,16 @@ module Grapes
           optional :total_fee, type: Integer, desc: 'Total fee'
         end
         post do
-          t = Trip.create!(declared(params).reject{|_, v| v.blank?})
-          { response: "Successfully created trip!", trip: t}
+          declared_params = declared(params).reject{|_, v| v.blank?}
+
+          tnv = TripNewValidate.new
+          tnv = tnv.call(declared_params)
+          if tnv.success?
+            t = Trip.create!(declared_params)
+            { response: "Successfully created trip!", trip: t}
+          else
+            { error: tnv.errors.first.to_s}
+          end
         end
 
         # Autor: Jackson Florez Jimenez
@@ -111,10 +119,20 @@ module Grapes
         route_param :id do
           put do
             t = Trip.find(params[:id])
-            t.update!(declared(params).reject{|_, v| v.blank?})
-            { response: "Successfully updated trip!", trip: t}
+
+            declared_params = declared(params).reject{|_, v| v.blank?}
+
+            tuv = TripUpdateValidate.new
+            tuv = tuv.call(declared_params)
+            if tuv.success?
+              t.update!(declared_params)
+              { response: "Successfully updated trip!", trip: t}
+            else
+              { error: tuv.errors.first.to_s}
+            end
           rescue ActiveRecord::RecordNotFound
-            error!('Trip not found',404)
+            #error!('Trip not found',404)
+            { error: 'Trip not found'}
           end
         end
 

@@ -13,6 +13,9 @@ gem 'pg', '>= 0.18', '< 2.0'
 # Gem API
 gem 'grape'
 
+# Validations Attributes
+gem "dry-rails", "~> 0.1"
+
 # gema usada para encontrar segun la latitud y longitud la ciudad
 gem 'geocoder', '~> 1.6', '>= 1.6.7'
 
